@@ -107,7 +107,7 @@ resource "aws_instance" "Webserver1" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id              = aws_subnet.sub1.id
-  user_data              = base64encode(file("userdata.sh"))
+  user_data              = file("${path.module}/userdata.sh")
 
 }
 
@@ -117,7 +117,7 @@ resource "aws_instance" "Webserver2" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id              = aws_subnet.sub2.id
-  user_data              = base64encode(file("userdata1.sh"))
+  user_data              = file("${path.module}/userdata.sh")
 
 }
 
